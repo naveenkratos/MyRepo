@@ -13,11 +13,11 @@ class IpExtractor:
 
         print("Started Ip Extraction")
 
-        # Defining the api-endpoint
         url = 'https://api.abuseipdb.com/api/v2/blacklist'
 
         querystring = {
-            'confidenceMinimum':'85'
+            'confidenceMinimum':'85',
+             'limit':'50'
         }
 
         headers = {
@@ -26,8 +26,9 @@ class IpExtractor:
         }
 
         response = requests.request(method='GET', url=url, headers=headers, params=querystring)
+        
         if(response.status_code==200):
-            # update abuseipdb_sample.json
+
             decodedResponse = json.loads(response.text)
             #clear the content in file
             with open(self.config.JSON_FILE_PATH, "w") as json_file:
@@ -36,9 +37,9 @@ class IpExtractor:
             with open(self.config.JSON_FILE_PATH, "w") as json_file:
                 json.dump(decodedResponse, json_file, indent=4)
         
-        xlsxFileExists = os.path.exists(self.config.XLSX_FILE_PATH)
+        jsonFileExists = os.path.exists(self.config.JSON_FILE_PATH)
 
-        if(xlsxFileExists!=True):
+        if(jsonFileExists!=True):
             return []
 
         with open(self.config.JSON_FILE_PATH) as f:
@@ -56,9 +57,8 @@ class IpExtractor:
 
     def saveAsXlsx(self):
 
-        print("Started saving")
+        print("Started saving in xlsx")
 
         self.jsonToXlsx.convert()
 
-        print("Finished saving")
         

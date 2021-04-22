@@ -10,8 +10,6 @@ class JsonToXlsx:
 
     def convert(self):
 
-        print("Started JSON to Xlsx Conversion")
-
         #check for file exists
         xlsxFileExists = os.path.exists(self.config.XLSX_FILE_PATH)
 
@@ -22,6 +20,14 @@ class JsonToXlsx:
             workbook.close()
 
         wb = load_workbook(self.config.XLSX_FILE_PATH)
+
+        sheet = wb.active
+        
+        #remove Existing Sheet
+        wb.remove(sheet)
+        
+        #create new Sheet
+        wb.create_sheet()
 
         sheet = wb.active
 
@@ -46,4 +52,4 @@ class JsonToXlsx:
             print("Error in saving xlsx file")
             return
 
-        print("Finished JSON to Xlsx Conversion")
+        print("Finished saving in xlsx")
