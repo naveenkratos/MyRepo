@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 from JsonToXlsx import JsonToXlsx
 
 class IpExtractor:
@@ -35,6 +36,11 @@ class IpExtractor:
             with open(self.config.JSON_FILE_PATH, "w") as json_file:
                 json.dump(decodedResponse, json_file, indent=4)
         
+        xlsxFileExists = os.path.exists(self.config.XLSX_FILE_PATH)
+
+        if(xlsxFileExists!=True):
+            return []
+
         with open(self.config.JSON_FILE_PATH) as f:
             jsonData = json.load(f)
         

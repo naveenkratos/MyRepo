@@ -1,4 +1,6 @@
 import json
+import os
+import xlsxwriter
 from openpyxl import load_workbook
 
 class JsonToXlsx:
@@ -9,6 +11,13 @@ class JsonToXlsx:
     def convert(self):
 
         print("Started JSON to Xlsx Conversion")
+        xlsxFileExists = os.path.exists(self.config.XLSX_FILE_PATH)
+
+        if(xlsxFileExists!=True):
+            
+            workbook = xlsxwriter.Workbook(self.config.XLSX_FILE_PATH)
+            worksheet = workbook.add_worksheet()
+            workbook.close()
 
         wb = load_workbook(self.config.XLSX_FILE_PATH)
 

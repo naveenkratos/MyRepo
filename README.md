@@ -3,7 +3,10 @@
 PreRequisite : 
 python
 
-ExternalLibraries:
+ExternalLibraries Needed:
+Installation: use pip install for all the  below libraries
+
 requests,
 MongoConnector,
-openpyxl.
+openpyxl,
+xlsxwriter
