@@ -11,10 +11,12 @@ class JsonToXlsx:
     def convert(self):
 
         print("Started JSON to Xlsx Conversion")
+
+        #check for file exists
         xlsxFileExists = os.path.exists(self.config.XLSX_FILE_PATH)
 
         if(xlsxFileExists!=True):
-            
+            #create new xlsx file 
             workbook = xlsxwriter.Workbook(self.config.XLSX_FILE_PATH)
             worksheet = workbook.add_worksheet()
             workbook.close()
