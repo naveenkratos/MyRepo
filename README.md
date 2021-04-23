@@ -8,7 +8,8 @@ ExternalLibraries Needed:
 requests,
 MongoConnector,
 openpyxl,
-xlsxwriter
+xlsxwriter,
+prettytable,
 
 Installation: use pip install for all the  above libraries
 
