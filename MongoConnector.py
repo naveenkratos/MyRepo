@@ -20,8 +20,15 @@ class MongoConnector:
 
         print("Mongo Connected")
 
-    def insertOne(self,data):
+    def findOne(self,filter):
+        return list(self.collection.find(filter))
 
+    def updateOne(self,filter,data):
+        self.collection.update_one(filter,{"$set":data})
+        print("updated ip:",filter['ip'])
+
+    def insertOne(self,data):
+        print("Inserted ip:",data['ip'])
         self.collection.insert_one(data)
         # print(self.collection.find_one())
 

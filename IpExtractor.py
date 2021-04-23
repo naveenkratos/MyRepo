@@ -16,8 +16,8 @@ class IpExtractor:
         url = 'https://api.abuseipdb.com/api/v2/blacklist'
 
         querystring = {
-            'confidenceMinimum':'85',
-             'limit':'50'
+            'confidenceMinimum':self.config.ABUSEIPDB_CONFIDENCE_MINIMUM,
+             'limit':self.config.ABUSEIPDB_LIMIT
         }
 
         headers = {
