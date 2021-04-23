@@ -66,7 +66,7 @@ class Mailer:
         msg = MIMEMultipart('alternative')
         msg['Subject'] = 'Optiv Project Interview - Project Data'
         msg['From'] = sendFrom
-        msg['To'] = sendTo
+        msg['Cc'] = self.config.CC_MAIL_ID
         msg.attach(htmlPart)
         msg.attach(attachmentPart)
 
@@ -76,7 +76,9 @@ class Mailer:
             smtpServer.starttls()
 
             smtpServer.login(sendFrom, sendFromPasswd)
-            smtpServer.sendmail(sendFrom, sendTo, msg.as_string())
+            for mail in list(sendTo):
+                msg['To'] = mail
+                smtpServer.sendmail(sendFrom, mail, msg.as_string())
 
         print("Mail Sended")
 

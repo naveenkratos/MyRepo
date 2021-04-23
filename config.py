@@ -10,4 +10,5 @@ MONGO_PORT = 27017
 MONGO_DB = 'Optiv'
 MONGO_COLLECTION = 'AbuseVT'
 SENDER_MAIL_ID = 'naveensivakumar13@gmail.com'
-RECEIVER_MAIL_ID = 'naveensivakumar13@gmail.com'
+RECEIVER_MAIL_ID = ['naveensivakumar13@gmail.com','Lokesh.Kumawat@optiv.com']
+CC_MAIL_ID = "Deepa.Kulkarni@optiv.com"

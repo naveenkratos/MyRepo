@@ -22,8 +22,3 @@ class TableCreator:
 
         return self.tabular_table.get_html_string()
 
-    def convertMongoDataToTable(self):
-        # self.insertRow(["221.181.185.220","CN","China Mobile communications corporation","[{ },{ }]","[{ },{ }]","[{ },{ }]","[{ },{ }]"])
-        pass
-
-        # self.mongo.
