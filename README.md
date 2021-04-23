@@ -6,7 +6,7 @@ python
 ExternalLibraries Needed:
 
 requests,
-MongoConnector,
+Pymongo,
 openpyxl,
 xlsxwriter,
 prettytable,
