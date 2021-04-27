@@ -38,16 +38,18 @@ class VtIpChecker:
         processedData = {}
         tableRow = []
 
+        ipDataKeys = list(ipData.keys())
+
         processedData['ip']=ip
         tableRow.append(processedData['ip'])
 
-        processedData['country'] = ipData['country']
+        processedData['country'] = ipData['country'] if 'country' in ipDataKeys else 'nil'
         tableRow.append(processedData['country'])
 
-        processedData['as_owner'] = ipData['as_owner']
+        processedData['as_owner'] = ipData['as_owner'] if 'as_owner' in ipDataKeys else 'nil'
         tableRow.append(processedData['as_owner'])
 
-        ipDataKeys = list(ipData.keys())
+        
 
         processedData['detected_urls'] = ipData['detected_urls'] if 'detected_urls'in ipDataKeys else []
         tableRow.append(",".join([json.dumps(processedData['detected_urls'][0])]) if len(processedData['detected_urls'])>0 else "nil")
